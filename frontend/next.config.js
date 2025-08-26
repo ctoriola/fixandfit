@@ -2,11 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   async rewrites() {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001'
     return [
       {
         source: '/api/:path*',
         destination: process.env.NODE_ENV === 'production' 
-          ? `${process.env.NEXT_PUBLIC_API_URL}/api/:path*`
+          ? `${apiUrl}/api/:path*`
           : 'http://localhost:3001/api/:path*',
       },
     ]
@@ -14,9 +15,6 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['localhost', 'fixandfit.com'],
-  },
-  env: {
-    NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL,
   },
 }
 
