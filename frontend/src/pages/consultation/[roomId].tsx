@@ -157,7 +157,7 @@ const ConsultationRoom: NextPage = () => {
       // Join consultation
       await axios.patch(`/api/consultations/${consultation?._id}/join`)
       
-      addChatMessage('system', `${user.firstName} ${user.lastName} joined the consultation`)
+      addChatMessage('system', `${user?.firstName} ${user?.lastName} joined the consultation`)
 
     } catch (error) {
       console.error('Failed to initialize WebRTC:', error)
